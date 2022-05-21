@@ -8,14 +8,32 @@
  * Check service worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/ICS2O-Assignment-06-JS/sw.js", {
+    scope: "/ICS2O-Assignment-06-JS/",
   })
 }
 
 /**
- * This function displays an alert.
- */
-function myButtonClicked() {
-  document.getElementById("hello-world").innerHTML = "<p>Hello, World!</p>"
+ * Get API for dog image.
+*/
+const getAnimeQuote = async (URLAddress) => {
+  try {
+    const result = await fetch(URLAddress)
+    const jsonData = await result.json()
+    console.log(jsonData)
+    const anime = jsonData.anime
+    const character = jsonData.character
+    const quote = jsonData.quote
+    document.getElementById("api-anime").innerHTML = "Anime name: " + anime
+    document.getElementById("api-character").innerHTML = "Character name: " + character
+    document.getElementById("api-quote").innerHTML = "Quote name: " + '"' + quote + '"'
+  } catch (err) {
+    console.log(err)
+    document.getElementById("api-anime").innerHTML = "Error fetching anime name."
+    document.getElementById("api-character").innerHTML = "Error fetching character name."
+    document.getElementById("api-quote").innerHTML = "Error fetching anime quote."
+  }
 }
+
+
+getAnimeQuote("https://animechan.vercel.app/api/random")
