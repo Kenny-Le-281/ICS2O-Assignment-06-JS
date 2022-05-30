@@ -20,7 +20,6 @@ const getAnimeQuote = async (URLAddress) => {
   try {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
-    console.log(jsonData)
     const anime = jsonData.anime
     const character = jsonData.character
     const quote = jsonData.quote
