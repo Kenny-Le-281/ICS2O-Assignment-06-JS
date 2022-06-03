@@ -14,7 +14,7 @@ if (navigator.serviceWorker) {
 }
 
 /**
- * Get API for dog image.
+ * Get API for anime quote.
 */
 const getAnimeQuote = async (URLAddress) => {
   try {
